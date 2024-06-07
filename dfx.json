@@ -1,0 +1,26 @@
+{
+  "canisters": {
+    "BoinaCoin_backend": {
+      "main": "src/BoinaCoin_backend/main.mo",
+      "type": "motoko"
+    },
+    "BoinaCoin_frontend": {
+      "dependencies": [
+        "BoinaCoin_backend"
+      ],
+      "source": [
+        "src/BoinaCoin_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "BoinaCoin_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
