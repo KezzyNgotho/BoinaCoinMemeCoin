@@ -1,31 +1,27 @@
-import { useState } from 'react';
-import { BoinaCoin_backend } from 'declarations/BoinaCoin_backend';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingScreen from './pages/LandingPage';
+import AboutSection from './pages/AboutSection';
+import TokenomicsSection from './pages/TokenomicsSection';
+import HowToBuySection from './pages/HowToBuySection';
+import Roadmap from './pages/RoadMapSection';
+import Whitepaper from './pages/WhitePaperScreen';
+import WhitepaperScreen from './pages/WhitePaperScreen';
 
-function App() {
-  const [greeting, setGreeting] = useState('');
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    BoinaCoin_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
-    });
-    return false;
-  }
-
+export default function App() {
   return (
-    <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
-    </main>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<LandingScreen />} />
+          <Route path="About" element={<AboutSection />} />
+          <Route path="Tokenomics" element={<TokenomicsSection />} />
+          <Route path="Buy" element={<HowToBuySection />} />
+          <Route path="Roadmap" element={<Roadmap />} />
+          <Route path="whitepaper" element={<WhitepaperScreen />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
-
-export default App;
