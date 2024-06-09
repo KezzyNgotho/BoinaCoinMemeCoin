@@ -81,42 +81,27 @@ const LandingPage = () => {
   return (
     <div className="landing-page min-h-screen flex flex-col bg-blue-100">
       {/* Header */}
-      <Header toggleMenu={() => setMenuOpen(!menuOpne)} menuOpen={menuOpen} />
+      <Header toggleMenu={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
 
       {/* Hero Section */}
-      <section className="flex flex-col lg:flex-row items-center justify-center px-4 py-16 bg-blue-100">
-        <div className="w-full lg:w-1/2 lg:pr-8 text-center lg:text-left">
-          <h1 className="text-5xl font-bold mb-4 text-blue-400 hero-text">
-            Welcome to Boina Coin
-          </h1>
-          <p className="text-lg text-black font-bold">
-            Discover the future of cryptocurrency. Join us on this exciting journey!
-          </p>
-          <p className="text-lg text-purple-800 font-bold">
-            Let's unite all the foodies!
-          </p>
-          <p className="text-lg text-pink-400 font-bold">
-            Join the hype and be part of the Boina Coin community.
-          </p>
-          <div className="flex justify-center lg:justify-start mt-8 space-x-4">
-          <button onClick={() => window.open("https://t.me/BoinaCoin", "_blank")} className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-full">
-  Community
-</button>
 
-            <button 
-               onClick={handleBuyNow}
-            className="buy-button bg-purple-900 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
-              Buy Now
-            </button>
-          </div>
-          <div className="flex items-center justify-center lg:justify-start mt-4">
-            <span className="animate-bounce text-3xl">🚀</span>
-          </div>
-        </div>
-        <div className="w-full lg:w-1/4 flex items-center justify-center bg-transparent hero-image">
-          <img src={heroImage} alt="Boina Coin Hero" className="rounded-lg shadow-lg" />
-        </div>
-      </section>
+      <Container fluid className="flex-grow-1 d-flex flex-column">
+        <Row className="flex-grow-1 d-flex align-items-center justify-content-center px-4 py-16 bg-blue-100">
+          <Col lg={6} className='text-center text-lg-left'>
+            <h1 className='text-5xl font-bold mb-4 text-blue-400 hero-text'>Welcome to BoinaCoin</h1>
+            <p className='text-lg text-black font-bold'>Discover the future of cryptocurrency. Join us on this exciting journey!</p>
+            <p className='text-lg text-purple-800 font-bold'>Let's unite all the foodies!</p>
+            <p className='text-lg text-pink-400 font-bold'>Join the hype and be part of the BoinaCoin community.</p>
+            <div className='d-flex justify-content-center justify-content-lg-start mt-4'>
+              <Button variant='primary' href='https://t.me/BoinaCoin' target="_blank">Community</Button>
+              <Button variant="secondary" className='ml-2' onClick={handleBuyNow}>Buy Now</Button>
+            </div>
+          </Col>
+          <Col lg={4} className='d-flex justify-content-center bg-transparent hero-image'>
+            <img src={heroImage} alt="BoinaCoin Hero" className='rounded-lg shadow-lg' /> 
+          </Col>
+        </Row>
+      </Container>
 
       {/* Footer */}
       <Footer handleBuyNow={handleBuyNow} />

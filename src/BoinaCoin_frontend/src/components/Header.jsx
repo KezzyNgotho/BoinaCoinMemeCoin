@@ -13,7 +13,7 @@ const Header = ({ toggleMenu, menuOpen }) => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls='basic-navbar-nav' onClick={toggleMenu} />
             <Navbar.Collapse id="basic-navbar-nav" className={menuOpen ? 'show' : ''}>
-                <Nav className="ml-auto">
+                <Nav className="mx-auto text-center">
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="About">About</Nav.Link>
                     <Nav.Link href="Buy">How To Buy</Nav.Link>
