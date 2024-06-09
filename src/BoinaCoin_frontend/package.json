@@ -8,7 +8,7 @@
     "start": "vite --port 3000",
     "prebuild": "dfx generate",
     "build": "tsc && vite build",
-    "build:css":"postcss src/styles/tailwind.scss -o src/styles/index.scss",
+    "build:css": "postcss src/styles/tailwind.scss -o src/styles/index.scss",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\""
   },
   "dependencies": {
@@ -17,9 +17,11 @@
     "@dfinity/principal": "^0.15.7",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "bootstrap": "^5.3.3",
     "chart.js": "^4.4.3",
     "framer-motion": "^11.2.10",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.2",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.23.1"
