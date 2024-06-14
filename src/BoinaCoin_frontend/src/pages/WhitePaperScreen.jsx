@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import '../fonts/font.css';
-import log from '../assets/log.png'; // Replace with your Boina Coin logo image
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTelegram, faTwitter, faDiscord } from '@fortawesome/free-brands-svg-icons';
-import openchatLogo from '../assets/openchat-removebg-preview.png';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../index.scss';
 
 const sectionVariants = {
@@ -88,54 +86,9 @@ const WhitepaperScreen = () => {
 
   return (
     <div className="min-h-screen bg-blue-100 flex flex-col">
-      {/* Header */}
-      <header className="bg-blue-200 rounded-lg shadow-md flex items-center justify-between p-4">
-        <div className="flex items-center">
-          <img src={log} alt="Boina Coin" className="w-14 h-14 rounded-full border-2 border-white" />
-          <div className="ml-4 font-cursive text-black font-bold">BOINACOIN</div>
-        </div>
-        <div className="lg:hidden" onClick={toggleMenu}>
-          <div className="w-6 h-1 bg-black mb-1 rounded"></div>
-          <div className="w-6 h-1 bg-black mb-1 rounded"></div>
-          <div className="w-6 h-1 bg-black rounded"></div>
-        </div>
-        <nav className={`lg:flex ${menuOpen ? 'block' : 'hidden'}`}>
-          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-4">
-            <li>
-              <a href="/" className="text-black hover:text-blue-800 font-bold">HOME</a>
-            </li>
-            <li>
-              <a href="about" className="text-black hover:text-blue-800 font-bold">ABOUT</a>
-            </li>
-            <li>
-              <a href="buy" className="text-black hover:text-blue-600 font-bold">HOW TO BUY</a>
-            </li>
-            <li>
-              <a href="tokenomics" className="text-black hover:text-blue-600 font-bold">TOKENOMICS</a>
-            </li>
-            <li>
-              <a href="roadmap" className="text-black hover:text-orange-600 font-bold">ROADMAP</a>
-            </li>
-            <li>
-              <a href="Whitepaper" className="text-black hover:text-blue-600 font-bold">WHITEPAPER</a>
-            </li>
-          </ul>
-        </nav>
-        <div className="flex space-x-4">
-          <a href="https://t.me/BoinaCoin" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600">
-            <FontAwesomeIcon icon={faTelegram} size="lg" />
-          </a>
-          <a href="https://x.com/BoinaCoin" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-800">
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href="https://openchat.xyz/yourOpenChatLink" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center hover:bg-blue-500">
-            <img src={openchatLogo} alt="OpenChat Logo" className="w-8 h-8" />
-          </a>
-          <a href="https://discord.com/invite/yourDiscordLink" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center hover:bg-purple-700">
-            <FontAwesomeIcon icon={faDiscord} />
-          </a>
-        </div>
-      </header>
+    {/* Header */}
+    <Header toggleMenu={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
+
       {/* Whitepaper Content */}
       <div className="whitepaper-container mx-auto max-w-4xl p-6 bg-white rounded-lg shadow-md mt-6">
         <header className="text-center py-4 mb-6">
@@ -154,9 +107,9 @@ const WhitepaperScreen = () => {
             <p className="text-gray-700">{section.text}</p>
           </motion.section>
         ))}
-        <footer className="text-center py-4 mt-6 border-t">
-          <p className="text-sm text-gray-600">&copy; 2024 BOINACOIN. All rights reserved.</p>
-        </footer>
+
+      {/* Footer */}
+      <Footer handleBuyNow={handleBuyNow} />
       </div>
     </div>
   );

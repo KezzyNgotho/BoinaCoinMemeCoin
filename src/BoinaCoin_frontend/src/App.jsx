@@ -7,6 +7,7 @@ import HowToBuySection from './pages/HowToBuySection';
 import Roadmap from './pages/RoadMapSection';
 import Whitepaper from './pages/WhitePaperScreen';
 import WhitepaperScreen from './pages/WhitePaperScreen';
+import 'bootstrap/dist/css/bootstrap.css';
 
 
 export default function App() {
