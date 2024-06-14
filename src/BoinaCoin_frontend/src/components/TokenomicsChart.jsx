@@ -20,7 +20,7 @@ const TokenomicsChart = () => {
     labels: ['Community', 'Team', 'Marketing', 'Liquidity', 'Development'],
     datasets: [
       {
-        data: [50, 20, 15, 10, 5],
+        data: [20, 10, 10, 50, 5,],
         backgroundColor: [
           '#FF6384',
           '#36A2EB',

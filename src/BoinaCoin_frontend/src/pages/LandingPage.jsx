@@ -9,75 +9,76 @@ import openchatLogo from '../assets/openchat-removebg-preview.png'; // Replace w
 import { useNavigate } from 'react-router-dom';
 
 const LandingPage = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
-  const [walletConnected, setWalletConnected] = useState(false);
-  const [principal, setPrincipal] = useState(null);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [transactionResult, setTransactionResult] = useState(null);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const checkWalletConnection = async () => {
-      const isConnected = await window.ic?.plug?.isConnected();
-      setWalletConnected(isConnected);
-      if (isConnected) {
-        const principalId = await window.ic.plug.getPrincipal();
-        setPrincipal(principalId.toText());
+ 
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [walletConnected, setWalletConnected] = useState(false);
+    const [principal, setPrincipal] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [transactionResult, setTransactionResult] = useState(null);
+    const navigate = useNavigate();
+  
+    useEffect(() => {
+      const checkWalletConnection = async () => {
+        const isConnected = await window.ic?.plug?.isConnected();
+        setWalletConnected(isConnected);
+        if (isConnected) {
+          const principalId = await window.ic.plug.getPrincipal();
+          setPrincipal(principalId.toText());
+        }
+      };
+      checkWalletConnection();
+    }, []);
+  
+    const connectWallet = async () => {
+      try {
+        if (window.ic && window.ic.plug) {
+          const connected = await identity.connect();
+          if (connected) {
+            setWalletConnected(true);
+            const principalId = await identity.getPrincipal();
+            setPrincipal(principalId.toString());
+          } else {
+            console.warn('User declined wallet connection');
+          }
+        } else {
+          console.error('IC Plug not available');
+          window.alert ('kindly install plug wallet')
+        }
+      } catch (error ) {
+        window.alert ('kindly install plug wallet')
+        console.error('Failed to connect wallet:', error);
       }
     };
-
-    checkWalletConnection();
-   /*  checkPlugWallet(); */
-  }, []);
-  const connectWallet = async () => {
-    try {
-      if (window.ic && window.ic.plug) { // Check for library availability
-        const connected = await identity.connect(); // Use useIdentity hook
-        if (connected) {
-          setWalletConnected(true);
-          const principalId = await identity.getPrincipal();
-          setPrincipal(principalId.toString());
-        } else {
-          console.warn('User declined wallet connection');
-        }
-      } else {
-        console.error('IC Plug not available');
-        window.alert ('kindly install plug wallet')
-        // Display error message to user (optional)
-      }
-    } catch (error ) {
-      window.alert ('kindly install plug wallet')
-      console.error('Failed to connect wallet:', error);
-     
-    }
-  };
   
-
-  const handleBuyNow = async () => {
-    if (!walletConnected) {
-      await connectWallet();
-    }
-
-    if (principal) {
-      try {
-        const result = await window.ic.plug.requestTransfer({
-          to: canisterId,
-          amount: 1000000, // Example amount in e8s (equivalent to 1 token)
-        });
-        console.log('Transaction successful:', result);
-        setTransactionResult(result);
-        setModalIsOpen(true);
-      } catch (error) {
-        console.error('Transaction failed:', error);
+    const handleBuyNow = async () => {
+      if (!walletConnected) {
+        await connectWallet();
       }
-    }
-  };
-
+  
+      if (principal) {
+        try {
+          const canisterId = "7hnek-5iaaa-aaaam-acnta-cai"; // Replace with your actual canister ID
+          const result = await window.ic.plug.requestTransfer({
+            to: canisterId,
+            amount: 1000000, // Example amount in e8s (equivalent to 1 token)
+          });
+          console.log('Transaction successful:', result);
+          setTransactionResult(result);
+          setModalIsOpen(true);
+        } catch (error) {
+          console.error('Transaction failed:', error);
+        }
+      }
+    };
+  
+   
+   
+  
   const closeModal = () => {
     setModalIsOpen(false);
     setTransactionResult(null);
