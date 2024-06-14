@@ -17,10 +17,10 @@ ChartJS.register(
 
 const TokenomicsChart = () => {
   const data = {
-    labels: ['Community', 'Team', 'Marketing', 'Liquidity', 'Charity'],
+    labels: ['Community', 'Team', 'Marketing', 'Liquidity', 'Development'],
     datasets: [
       {
-        data: [20, 10, 15, 45, 10],
+        data: [50, 20, 15, 10, 5],
         backgroundColor: [
           '#FF6384',
           '#36A2EB',
