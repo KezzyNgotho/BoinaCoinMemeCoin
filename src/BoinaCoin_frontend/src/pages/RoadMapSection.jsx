@@ -134,9 +134,7 @@ const RoadMapSection = () => {
           <a href="https://openchat.xyz/yourOpenChatLink" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-blue-400 flex items-center justify-center hover:bg-blue-500">
             <img src={openchatLogo} alt="OpenChat Logo" className="w-8 h-8" />
           </a>
-          <a href="https://discord.com/invite/yourDiscordLink" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center hover:bg-purple-700">
-            <FontAwesomeIcon icon={faDiscord} />
-          </a>
+          
         </div>
       </header>
       {/* Hero Section */}
@@ -161,7 +159,7 @@ const RoadMapSection = () => {
   🎉
   </div>
   <p className="font-semibold">Launchpad</p>
-  <p className="text-black-600">
+  <p className="text-black-400">
  prepare for takeoff. The countdown begins! 🕒
   </p>
 

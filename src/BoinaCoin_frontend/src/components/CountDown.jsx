@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const Countdown = () => {
-  const launchDate = new Date('2024-06-05T00:00:00Z'); // Set your launch date and time here
+  const launchDate = new Date('2024-06-30T00:00:00Z'); // Set your launch date and time here
   const now = new Date();
   const timeRemaining = launchDate - now;
 
@@ -12,7 +12,7 @@ const Countdown = () => {
 
   return (
     <div className="rounded-full bg-purple-800 p-4 shadow-sm animate-pulse">
-      <div className="text-l font-bold text-black-500">
+      <div className="text-s font-bold text-black-500">
         {days}d{hours}h 
         <br/>
         {minutes}m 
